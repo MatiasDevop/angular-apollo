@@ -7,6 +7,14 @@ const Get_Platform = gql`query{
     name
   }
 }`;
+
+const Get_FilterName = gql`query ($brandName:String){
+    BrandFilter(brand:$brandName){
+      Id
+      ProductName
+      Brand
+    }
+}`;
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -16,6 +24,7 @@ export class AppComponent implements OnInit {
   
   allPlatforms: Platform[] = [];
   title = 'ng-graphql';
+  selectedName: string = '';
   /**
    *
    */
@@ -29,6 +38,19 @@ export class AppComponent implements OnInit {
     .subscribe(({data, loading}) => {
       console.log(loading);
       this.allPlatforms = data.platform;
+    })
+  }
+
+  searchByName(){
+    this.apollo.watchQuery<any>({
+      query: Get_FilterName,
+      variables:{
+        "brandName": this.selectedName
+      }
+    }).valueChanges
+    .subscribe(({data, loading}) => {
+      console.log(loading);
+      this.allPlatforms = data.BrandFilter;
     })
   }
 }
