@@ -1,0 +1,40 @@
+<p>platform works!</p>
+<br/>
+<form class="row g-3">
+  <div class="col-auto">
+    <label for="txtPlatformName" class="visually-hidden">Platform Name</label>
+    <input type="text" class="form-control" [(ngModel)]="platformForm.name" name="txtPlatformName" id="txtPlatformName" placeholder="Platform Name">
+  </div>
+  <!-- <div class="col-auto">
+    <label for="textName" class="visually-hidden">Search by Platform</label>
+    <input type="text" class="form-control" [(ngModel)]="selectedName" name="textName" id="textName" placeholder="Search by name">
+  </div> -->
+  <div class="col-auto">
+    <button type="submit" class="btn btn-primary mb-3" (click)="newPlatform()">Create</button>
+  </div>
+</form>
+<br/>
+<form class="row g-3">
+  <div class="col-auto">
+    <label for="textName" class="visually-hidden">Search by Platform</label>
+    <input type="text" class="form-control" [(ngModel)]="selectedName" name="textName" id="textName" placeholder="Search by name">
+  </div>
+  <div class="col-auto">
+    <button type="submit" class="btn btn-primary mb-3" (click)="searchByName()">Search</button>
+  </div>
+</form>
+<br/>
+<table class="table table-dark table-striped">
+  <thead>
+    <tr>
+      <th scope="col">Id</th>
+      <th scope="col">Name</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let item of allPlatforms">
+      <td>{{item.id}}</td>
+      <td>{{item.name}}</td>
+    </tr>
+  </tbody>
+</table>
