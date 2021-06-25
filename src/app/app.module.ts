@@ -7,12 +7,14 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { TheoryComponent } from './home/theory/theory.component';
 import { PlatformComponent } from './home/platform/platform.component';
+import { TheoryPipe } from './pipes/theory.pipe';
 
 @NgModule({
   declarations: [
     AppComponent,
     TheoryComponent,
-    PlatformComponent
+    PlatformComponent,
+    TheoryPipe
   ],
   imports: [
     BrowserModule,

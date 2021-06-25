@@ -1,12 +1,12 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { Routes } from '@angular/router';
+import { RouterModule, Routes } from '@angular/router';
 import { TheoryComponent } from './home/theory/theory.component';
 import { AppComponent } from './app.component';
 import { PlatformComponent } from './home/platform/platform.component';
 
 const routes: Routes =[
-  {path:'', component: AppComponent},
+  {path:'', redirectTo:'/theory', pathMatch: 'full'},
   {path:'theory', component: TheoryComponent},
   {path:'platform', component: PlatformComponent}
 ];
@@ -14,7 +14,9 @@ const routes: Routes =[
 @NgModule({
   declarations: [],
   imports: [
-    CommonModule
-  ]
+    CommonModule,
+    RouterModule.forRoot(routes)
+  ],
+  exports:[RouterModule]
 })
 export class AppRoutingModule { }
